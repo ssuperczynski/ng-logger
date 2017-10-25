@@ -3,7 +3,7 @@
 const shell = require('shelljs');
 const chalk = require('chalk');
 
-const PACKAGE = `ng-serializer`;
+const PACKAGE = `ng-logger`;
 const NPM_DIR = `dist`;
 const MODULES_DIR = `${NPM_DIR}/modules`;
 const BUNDLES_DIR = `${NPM_DIR}/bundles`;
@@ -18,7 +18,7 @@ shell.mkdir(`-p`, `./${BUNDLES_DIR}`);
 // https://github.com/palantir/tslint/blob/master/src/configs/recommended.ts
 // https://github.com/mgechev/codelyzer
 shell.echo(`Start TSLint`);
-shell.exec(`tslint -c tslint.json -t stylish src/**/*.ts`);
+shell.exec(`tslint -c tslint.json -p tsconfig-build.json --type-check -t stylish src/**/*.ts`);
 shell.echo(chalk.green(`TSLint completed`));
 
 /* AoT compilation: ES2015 sources */
